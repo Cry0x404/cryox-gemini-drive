@@ -1,0 +1,27 @@
+name: Assemble source
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    if: ${{ !contains(github.event.head_commit.message, '[assembled]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Assemble provider client
+        run: |
+          cat .bootstrap/gemini-web.part* > /tmp/gemini-web.js.gz
+          gzip -dc /tmp/gemini-web.js.gz > lib/gemini-web.js
+          test "$(sha256sum lib/gemini-web.js | cut -d' ' -f1)" = "93b94031f1aba4685503ace33d1ca96078bc58b7d31fa907d8ed3bb1827b15ae"
+      - name: Commit assembled source
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lib/gemini-web.js
+          git commit -m "Assemble provider client [assembled]"
+          git push
