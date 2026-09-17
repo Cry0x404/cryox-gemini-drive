@@ -13,15 +13,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Assemble provider client
+
+      - name: Restore Gemini transport
         run: |
+          mkdir -p lib
           cat .bootstrap/gemini-web.part* > /tmp/gemini-web.js.gz
           gzip -dc /tmp/gemini-web.js.gz > lib/gemini-web.js
           test "$(sha256sum lib/gemini-web.js | cut -d' ' -f1)" = "93b94031f1aba4685503ace33d1ca96078bc58b7d31fa907d8ed3bb1827b15ae"
-      - name: Commit assembled source
+          rm -rf .bootstrap
+          rm -f .github/workflows/assemble-source.yml
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm install --ignore-scripts --no-audit --no-fund
+
+      - name: Verify source
+        run: npm run verify
+
+      - name: Commit source
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add lib/gemini-web.js
-          git commit -m "Assemble provider client [assembled]"
+          git config user.name "Cry0x404"
+          git config user.email "330183945+Cry0x404@users.noreply.github.com"
+          git add -A
+          git commit -m "Import application source [assembled]"
           git push

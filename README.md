@@ -17,7 +17,7 @@ Cryox Gemini Drive is a local encrypted file vault backed by a persistent Gemini
 - Keeps only encrypted vault envelopes in the local download mirror.
 - Recovers Cryox-managed records from Gemini history after source ZIP replacement or relocation.
 - Ignores ordinary Gemini attachments that do not contain the Cryox storage marker.
-- Keeps vault keys, indexes, encrypted mirrors, and provider continuation state outside the source tree.
+- Keeps vault keys, indexes, encrypted mirrors, and provider continuation state outside the source tree; `cookies.json` is only a local session bootstrap placeholder and must never be committed with live values.
 - Binds the local server to `127.0.0.1` by default and applies browser hardening headers.
 
 ## Requirements
@@ -37,11 +37,18 @@ Windows users can also extract a release archive and run `START.bat`.
 
 ## Session setup
 
-The repository and release archives include a blank `cookies.json` placeholder. Export your Gemini browser cookies as JSON, replace the placeholder contents with the complete export, save the file, and start the application. No import command is required.
+A blank `cookies.json` placeholder is included in the repository and release archives. Export your Gemini browser cookies as JSON, replace the placeholder contents with the complete export, save the file, and start the application. No import command is required.
 
 The export must include `__Secure-1PSID` and `__Secure-1PSIDTS`. When a valid export is detected, Cryox Drive also keeps a minimized private session copy in the platform application-data directory so replacing the source ZIP does not require another import step.
 
-Keep the committed `cookies.json` placeholder empty. Do not commit, share, or include a populated cookie export in screenshots. A browser session cookie is an account credential. `npm run check` fails when it detects a populated placeholder or common credential patterns.
+Environment variables remain available for advanced setups:
+
+```text
+CRYOX_GEMINI_PSID
+CRYOX_GEMINI_PSIDTS
+```
+
+The committed `cookies.json` must remain `[]`. Never commit, share, or include a populated cookie export in screenshots. A browser session cookie is an account credential. The repository secret scan is intended to catch common credential patterns before changes are merged.
 
 ## Run
 
@@ -104,6 +111,18 @@ The public repository contains no live Google session cookies and no fixed vault
 - The interface uses a restrictive Content Security Policy and disables framing.
 
 Read `docs/security.md` before changing `HOST` or exposing the service through a proxy.
+
+## Configuration
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `PORT` | HTTP port | `3000` |
+| `HOST` | Bind address | `127.0.0.1` |
+| `CRYOX_STORAGE_ROOT` | Root for local runtime state | platform application-data directory |
+| `CRYOX_GEMINI_COOKIE_FILE` | Browser cookie export location | `<project>/cookies.json` |
+| `CRYOX_GEMINI_SESSION_FILE` | Minimized private session location | `<storage-root>/data/gemini-session.json` |
+| `CRYOX_VAULT_KEY_FILE` | Vault key location | `<storage-root>/data/vault.key` |
+| `CRYOX_VAULT_KEY_HEX` | Optional 64-character hex key override | unset |
 
 ## Repository layout
 
