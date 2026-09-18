@@ -1,7 +1,7 @@
 [![CI](https://github.com/Cry0x404/cryox-gemini-drive/actions/workflows/ci.yml/badge.svg)](https://github.com/Cry0x404/cryox-gemini-drive/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/Cry0x404/cryox-gemini-drive/actions/workflows/codeql.yml/badge.svg)](https://github.com/Cry0x404/cryox-gemini-drive/actions/workflows/codeql.yml)
 ![Node](https://img.shields.io/badge/node-22%2B-111111)
-![License](https://img.shields.io/badge/license-MIT-111111)
+![License](https://img.shields.io/badge/license-GPL--3.0--only-111111)
 ![Status](https://img.shields.io/badge/status-alpha-8a5b2f)
 
 # Cryox Gemini Drive
@@ -381,4 +381,8 @@ Security-sensitive reports must follow `SECURITY.md`. Never include live session
 
 ## License
 
-MIT. See `LICENSE`.
+Copyright (c) 2026 Cry0x404.
+
+Cryox Gemini Drive is licensed under the GNU General Public License v3.0 only (`GPL-3.0-only`). You may use, study, modify, and redistribute the software under the terms of that license. Distributed modified versions and other covered derivative works must remain under GPL-3.0-only and provide the corresponding source as required by the license.
+
+See `LICENSE` for the complete license terms.
