@@ -4,6 +4,8 @@ All notable changes to this project are documented in this file.
 
 ## Unreleased
 
+- Relicensed the project from MIT to `GPL-3.0-only` for releases from this change forward. Previously published MIT-licensed versions remain available under their original terms.
+
 - Fixed a file-picker upload regression where clearing the input could empty the live `FileList` before the upload request started.
 
 - Follow Gemini same-origin bootstrap redirects, retry with the complete browser cookie export before reduced-cookie fallback, and use a browser-compatible TLS/HTTP2 transport for Gemini Web requests.

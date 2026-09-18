@@ -22,7 +22,7 @@
     "local-first"
   ],
   "author": "Cry0x404",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Cry0x404/cryox-gemini-drive.git"
