@@ -1,6 +1,6 @@
 {
   "name": "cryox-gemini-drive",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "description": "A local encrypted file vault backed by Gemini Web with persistent recovery and a hardened local interface.",
   "type": "module",
