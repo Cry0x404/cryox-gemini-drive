@@ -1,5 +1,6 @@
 [![CI](https://github.com/Cry0x404/cryox-gemini-drive/actions/workflows/ci.yml/badge.svg)](https://github.com/Cry0x404/cryox-gemini-drive/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/Cry0x404/cryox-gemini-drive/actions/workflows/codeql.yml/badge.svg)](https://github.com/Cry0x404/cryox-gemini-drive/actions/workflows/codeql.yml)
+[![Release](https://img.shields.io/github/v/release/Cry0x404/cryox-gemini-drive?display_name=tag&sort=semver&color=111111)](https://github.com/Cry0x404/cryox-gemini-drive/releases/latest)
 ![Node](https://img.shields.io/badge/node-22%2B-111111)
 ![License](https://img.shields.io/badge/license-GPL--3.0--only-111111)
 ![Status](https://img.shields.io/badge/status-alpha-8a5b2f)
@@ -14,6 +15,12 @@ Cryox does not claim that Gemini provides unlimited storage. The application doe
 
 > [!IMPORTANT]
 > Cryox Gemini Drive uses an unofficial Gemini Web transport and is not affiliated with or endorsed by Google. Gemini's private web protocol can change without notice and may require compatibility updates.
+
+## Interface
+
+![Cryox Drive file vault interface](docs/assets/cryox-drive-ui.png)
+
+The preview shows the empty-vault state without account data, file contents, or session credentials.
 
 ## Overview
 

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security policy
+    url: https://github.com/Cry0x404/cryox-gemini-drive/security/policy
+    about: Read the security policy before reporting a vulnerability or sharing sensitive material.
+  - name: Support
+    url: https://github.com/Cry0x404/cryox-gemini-drive/blob/main/SUPPORT.md
+    about: Check the support guidance before opening a bug report.
