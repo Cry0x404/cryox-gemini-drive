@@ -6,7 +6,7 @@
 
 # Cryox Gemini Drive
 
-Cryox Gemini Drive is a local encrypted file vault backed by a persistent Gemini Web conversation. Plaintext uploads are processed in memory, wrapped in an authenticated encrypted envelope, mirrored locally in encrypted form, and associated with a Cryox-only marker in Gemini history for recovery. The application does not impose its own storage quota or per-file size cap; upstream Gemini behavior still applies.
+Cryox Gemini Drive is a local encrypted file vault backed by a persistent Gemini Web conversation. Plaintext uploads are processed in memory, wrapped in an authenticated encrypted envelope, mirrored locally in encrypted form, and associated with a Cryox-only marker in Gemini history for recovery.
 
 > [!IMPORTANT]
 > This project uses an unofficial Gemini Web transport and is not affiliated with or endorsed by Google. Private web endpoints can change without notice.
@@ -17,7 +17,7 @@ Cryox Gemini Drive is a local encrypted file vault backed by a persistent Gemini
 - Keeps only encrypted vault envelopes in the local download mirror.
 - Recovers Cryox-managed records from Gemini history after source ZIP replacement or relocation.
 - Ignores ordinary Gemini attachments that do not contain the Cryox storage marker.
-- Keeps vault keys, indexes, encrypted mirrors, and provider continuation state outside the source tree.
+- Keeps vault keys, indexes, encrypted mirrors, and provider continuation state outside the source tree; the local cookie export is isolated in ignored `cookies.json`.
 - Binds the local server to `127.0.0.1` by default and applies browser hardening headers.
 
 ## Requirements
@@ -37,11 +37,18 @@ Windows users can also extract a release archive and run `START.bat`.
 
 ## Session setup
 
-The repository and release archives include a blank `cookies.json` placeholder. Export your Gemini browser cookies as JSON, replace the placeholder contents with the complete export, save the file, and start the application. No import command is required.
+A blank `cookies.json` is included in release archives. Export your Gemini browser cookies as JSON, replace the contents of `cookies.json` with the complete export, save the file, and start the application. No import command is required.
 
 The export must include `__Secure-1PSID` and `__Secure-1PSIDTS`. When a valid export is detected, Cryox Drive also keeps a minimized private session copy in the platform application-data directory so replacing the source ZIP does not require another import step.
 
-Keep the committed `cookies.json` placeholder empty. Do not commit, share, or include a populated cookie export in screenshots. A browser session cookie is an account credential. `npm run check` fails when it detects a populated placeholder or common credential patterns.
+Environment variables remain available for advanced setups:
+
+```text
+CRYOX_GEMINI_PSID
+CRYOX_GEMINI_PSIDTS
+```
+
+`cookies.json` is excluded by `.gitignore`. Do not force-add it, commit it, share it, or include it in screenshots. A browser session cookie is an account credential.
 
 ## Run
 
@@ -105,6 +112,18 @@ The public repository contains no live Google session cookies and no fixed vault
 
 Read `docs/security.md` before changing `HOST` or exposing the service through a proxy.
 
+## Configuration
+
+| Variable | Purpose | Default |
+| --- | --- | --- |
+| `PORT` | HTTP port | `3000` |
+| `HOST` | Bind address | `127.0.0.1` |
+| `CRYOX_STORAGE_ROOT` | Root for local runtime state | platform application-data directory |
+| `CRYOX_GEMINI_COOKIE_FILE` | Browser cookie export location | `<project>/cookies.json` |
+| `CRYOX_GEMINI_SESSION_FILE` | Minimized private session location | `<storage-root>/data/gemini-session.json` |
+| `CRYOX_VAULT_KEY_FILE` | Vault key location | `<storage-root>/data/vault.key` |
+| `CRYOX_VAULT_KEY_HEX` | Optional 64-character hex key override | unset |
+
 ## Repository layout
 
 ```text
@@ -119,7 +138,7 @@ src/
 lib/                    Gemini transport, session handling, and vault cryptography
 scripts/                Validation utilities
 test/                   Node.js regression tests
-docs/                   Architecture, authentication, and security notes
+docs/                   Architecture, security, authentication, and interface system
 ```
 
 ## Validation
@@ -134,7 +153,7 @@ The verification path performs JavaScript syntax validation, a repository-level 
 
 Cryox Gemini Drive is alpha software. The provider protocol layer is intentionally isolated because Gemini Web is an undocumented upstream interface.
 
-See `docs/architecture.md`, `docs/authentication.md`, and `docs/security.md` for implementation details.
+See `docs/architecture.md`, `docs/authentication.md`, `docs/security.md`, and `docs/design-system.md` for implementation details.
 
 ## Contributing
 

@@ -1,0 +1,30 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Local authentication and encrypted storage state
+data/
+gemini-threads/
+*.cvault
+
+# Credentials / certificates
+cookies*.json
+session*.json
+credentials*.json
+secrets*.json
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Runtime / build output
+*.log
+dist/
+coverage/
+.nyc_output/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+

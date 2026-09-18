@@ -1,0 +1,40 @@
+{
+  "name": "cryox-gemini-drive",
+  "version": "0.3.0",
+  "private": true,
+  "description": "A local encrypted file vault backed by Gemini Web with persistent recovery and a hardened local interface.",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node scripts/check-syntax.mjs && node scripts/scan-secrets.mjs",
+    "test": "node --test",
+    "verify": "npm run check && npm test"
+  },
+  "keywords": [
+    "gemini",
+    "file-storage",
+    "encrypted-storage",
+    "nodejs",
+    "self-hosted",
+    "aes-256-gcm",
+    "local-first"
+  ],
+  "author": "Cry0x404",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cry0x404/cryox-gemini-drive.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cry0x404/cryox-gemini-drive/issues"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "express": "4.22.2",
+    "impit": "0.14.5"
+  }
+}
