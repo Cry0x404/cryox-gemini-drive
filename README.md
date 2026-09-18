@@ -127,7 +127,6 @@ For development with Node's watch mode:
 npm run dev
 ```
 
-Windows users can also use `START.bat` from a source checkout or release archive.
 
 ## Gemini session setup
 
