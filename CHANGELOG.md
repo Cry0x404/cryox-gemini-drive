@@ -8,7 +8,6 @@ All notable changes to this project are documented in this file.
 
 - Relicensed the project from MIT to `GPL-3.0-only` for releases from this change forward. Previously published MIT-licensed versions remain available under their original terms.
 - Expanded the README with the vault architecture, encryption and recovery model, local API, persistent state, security boundaries, and operational limitations.
-- Removed the Windows-only `START.bat` launcher so `npm install` and `npm start` remain the canonical cross-platform setup and launch path.
 - Aligned CodeQL pull-request execution with the repository's required `Analyze JavaScript` status check.
 - Fixed a file-picker upload regression where clearing the input could empty the live `FileList` before the upload request started.
 
