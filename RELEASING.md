@@ -13,6 +13,6 @@ Cryox Gemini Drive uses semantic versioning while the project remains in alpha.
 
 Open the **Release** workflow in GitHub Actions and run it with the exact version from `package.json`, without a `v` prefix.
 
-The workflow validates the source, creates an annotated `vX.Y.Z` tag, builds a source ZIP, generates a SHA-256 checksum, and publishes both files in a GitHub Release.
+The workflow validates the source, extracts the matching version section from `CHANGELOG.md` as the release notes, creates an annotated `vX.Y.Z` tag, builds a source ZIP, generates a SHA-256 checksum, and publishes both files in a GitHub Release.
 
 Published tags and release artifacts should be treated as immutable. Corrections are released under a new version.
