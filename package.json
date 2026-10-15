@@ -34,7 +34,7 @@
     "node": ">=22"
   },
   "dependencies": {
-    "express": "4.22.2",
+    "express": "5.3.0",
     "impit": "0.14.5"
   }
 }
