@@ -35,6 +35,6 @@
   },
   "dependencies": {
     "express": "4.22.2",
-    "impit": "0.14.5"
+    "impit": "0.14.7"
   }
 }
